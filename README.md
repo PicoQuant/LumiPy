@@ -67,7 +67,7 @@ The `demos/` directory contains various example scripts demonstrating different 
 ### Main Modules
 
 - `pqlumi.py` - Main interface for Luminosa control
-- `pqtool´ - Helper functions for plotting, logging, etc.
+- `pqtool.py` - Helper functions for plotting, logging, etc.
 - `pqdc.py` - Device control module
 - `pqcam.py` - Camera control
 - `pqharp.py` - Time-correlated single photon counting (TCSPC) module
