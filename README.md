@@ -7,9 +7,7 @@ LumiPy is a Python interface for controlling and acquiring data from PicoQuant's
 - Control of Luminosa microscope hardware
 - Image and point scanning capabilities
 - Data acquisition and analysis
-- Support for various measurement types (image, line, point)
 - Integration with PicoQuant's TCSPC devices
-- Support for PTU file format for data storage
 - Live analysis and visualization tools
 
 ## Installation
@@ -56,6 +54,11 @@ The `demos/` directory contains various example scripts demonstrating different 
 
 - `Demo_pqlumi_*.py` - Basic Luminosa operations
 - `Demo_pqdc_*.py` - Device control examples
+- `Demo_pqharp.py` - TCSPC control examples
+- `Demo_pqharp_CountMeter.py` - A simple countmeter chart
+- `Demo_pqharp_LevelScan.py` - A simple program for scanning the trigger level of an input channel
+- `Demo_pqcam.py` - Camera control examples
+- `Demo_pqscan.py` - Scanner control examples
 - `UC_*.py` - Use case examples (FRAP, FCS, etc.)
 
 ## Documentation
