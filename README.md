@@ -19,10 +19,6 @@ LumiPy is a Python interface for controlling and acquiring data from PicoQuant's
    ```bash
    pip install numpy matplotlib
    ```
-3. Install the LumiPy package:
-   ```bash
-   python setup.py install
-   ```
 
 ## Getting Started
 
