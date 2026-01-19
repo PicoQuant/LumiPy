@@ -29,7 +29,8 @@ LumiPy is a Python interface for controlling and acquiring data from PicoQuant's
 ### Basic Usage
 
 ```python
-from libs import pqlumi
+import pqlumi
+import pqtool
 
 # Create a measurement instance
 measurement = pqlumi.measurement
@@ -45,7 +46,7 @@ measurement.start_meas("image")
 while measurement.meas_status():
     elapsed = measurement.get_elapsed_meas_time()
     print(f"Measurement running: {elapsed:.1f} seconds")
-    time.sleep(1)
+    pqtool.gui_sleep(25)
 
 # Access measurement data
 analysis_names = measurement.get_analysis_names()
@@ -66,6 +67,7 @@ The `demos/` directory contains various example scripts demonstrating different 
 ### Main Modules
 
 - `pqlumi.py` - Main interface for Luminosa control
+- `pqtool´ - Helper functions for plotting, logging, etc.
 - `pqdc.py` - Device control module
 - `pqcam.py` - Camera control
 - `pqharp.py` - Time-correlated single photon counting (TCSPC) module
