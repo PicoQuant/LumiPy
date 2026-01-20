@@ -56,7 +56,7 @@ The `demos/` directory contains various example scripts demonstrating different 
 - `Demo_pqdc_*.py` - Device control examples
 - `Demo_pqharp.py` - TCSPC control examples
 - `Demo_pqharp_CountMeter.py` - A simple countmeter chart
-- `Demo_pqharp_LevelScan.py` - A simple program for scanning the trigger level of an input channel
+- `Demo_pqharp_LevelScan.py` - A script for scanning the trigger level of an input channel
 - `Demo_pqcam.py` - Camera control examples
 - `Demo_pqscan.py` - Scanner control examples
 - `UC_*.py` - Use case examples (FRAP, FCS, etc.)
