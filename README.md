@@ -93,3 +93,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Disclaimer
 
 **Use LumiPy at your own risk. We are not responsible for any damages or losses resulting from the use of this software.**
+
+<img src="Icon.png" alt="LumiPy logo" style="height: 100px; width:100px;"/>
