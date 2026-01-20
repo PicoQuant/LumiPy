@@ -49,7 +49,9 @@ for name in analysis_names:
 ```
 
 **Note:**
+
 When using Luminosas integrated Python editor on a real system, all necessary PQ libraries can be imported directly (as shown above).
+
 If you want to develop on a remote PC without HW you need to make sure that the libraries can be found (e.g. by including the path to the libs/ directory; copying the libs to your project path; etc.)
 
 ## Examples
