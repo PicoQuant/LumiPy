@@ -1,14 +1,29 @@
 # LumiPy
 
-LumiPy is a Python interface for controlling and acquiring data from PicoQuant's Luminosa microscope systems. This library provides a high-level API to interact with various components of the Luminosa system, including confocal imaging, point scanning, and data acquisition.
+LumiPy is a Python interface for controlling and acquiring data from PicoQuant's Luminosa microscope systems. This library provides a high-level API to interact with various components of the Luminosa system, including confocal imaging, point scanning, and data acquisition. 
+The Python interface allows for feedback adaptive workflows  for smart microscopy and for connecting open source software projects to the microscope.
+
+
 
 ## Features
 
-- Control of Luminosa microscope hardware at high and low level
-- Image and point scanning capabilities
-- Data acquisition and live analysis
+- Control of Luminosa microscope hardware at high and low level. Move actuators (mirrors, filter wheels, etc.)
+- Define ROIs and positions in a “global” coordinate system
+- Set measurement parameters for image and point measurements
+- Start & Stop measurements
+- Access online results
 - Visualization tools
-- ...
+- Use the Python environment of your choice
+  - A small build-in Python 3.13 Environment
+  - Any Python installation recognized by Windows as Python Environment
+- Use the editor of your choice
+  - Small integrated Python editor
+  - Any modern external Python editor    
+
+
+
+
+
 
 ## Installation
 
