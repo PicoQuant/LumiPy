@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="680"
+   viewBox="0 0 680 340"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="Overview.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview12"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="4.1529412"
+     inkscape:cx="340.12039"
+     inkscape:cy="166.74929"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg12" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker2"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Triangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+    <marker
+       id="arrow"
+       viewBox="0 0 10 10"
+       refX="8"
+       refY="5"
+       markerWidth="6"
+       markerHeight="6"
+       orient="auto-start-reverse">
+      <path
+         d="M2 1L8 5L2 9"
+         fill="none"
+         stroke="context-stroke"
+         stroke-width="1.5"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         id="path1" />
+    </marker>
+  </defs>
+  <style
+     id="style1">
+  text { font-family: -apple-system, 'Segoe UI', sans-serif; }
+  .title { font-size: 13px; font-weight: 600; }
+  .subtitle { font-size: 11px; font-weight: 400; }
+  .label { font-size: 11px; font-weight: 400; }
+  .badge { font-size: 10px; font-weight: 500; }
+</style>
+  <!-- Left container: AI host -->
+  <rect
+     x="40"
+     y="40"
+     width="260"
+     height="260"
+     rx="16"
+     fill="#E6F1FB"
+     stroke="#85B7EB"
+     stroke-width="0.5"
+     id="rect1" />
+  <text
+     class="subtitle"
+     x="56"
+     y="64"
+     fill="#185FA5"
+     id="text1">Local or remote process</text>
+  <!-- Right container: Luminosa -->
+  <rect
+     x="380"
+     y="40"
+     width="260"
+     height="260"
+     rx="16"
+     fill="#E1F5EE"
+     stroke="#5DCAA5"
+     stroke-width="0.5"
+     id="rect2" />
+  <text
+     class="subtitle"
+     x="396"
+     y="64"
+     fill="#0F6E56"
+     id="text2">Local process</text>
+  <!-- AI host app box -->
+  <rect
+     x="66"
+     y="88"
+     width="210"
+     height="56"
+     rx="8"
+     fill="#B5D4F4"
+     stroke="#85B7EB"
+     stroke-width="0.5"
+     id="rect3" />
+  <text
+     class="title"
+     x="171"
+     y="108"
+     text-anchor="middle"
+     dominant-baseline="central"
+     fill="#042C53"
+     id="text3">AI host application</text>
+  <text
+     class="subtitle"
+     x="171"
+     y="128"
+     text-anchor="middle"
+     dominant-baseline="central"
+     fill="#185FA5"
+     id="text4">Claude Desktop, LM Studio</text>
+  <!-- Luminosa box -->
+  <rect
+     x="404"
+     y="88"
+     width="210"
+     height="44"
+     rx="8"
+     fill="#9FE1CB"
+     stroke="#5DCAA5"
+     stroke-width="0.5"
+     id="rect4" />
+  <text
+     class="title"
+     x="509"
+     y="110"
+     text-anchor="middle"
+     dominant-baseline="central"
+     fill="#04342C"
+     id="text5">Luminosa</text>
+  <!-- MCP server box -->
+  <rect
+     x="66"
+     y="180"
+     width="210"
+     height="100"
+     rx="12"
+     fill="#EEEDFE"
+     stroke="#AFA9EC"
+     stroke-width="0.5"
+     id="rect5" />
+  <text
+     class="title"
+     x="171"
+     y="218"
+     text-anchor="middle"
+     dominant-baseline="central"
+     fill="#26215C"
+     id="text6">lumipy_mcp_server.py</text>
+  <text
+     class="subtitle"
+     x="171"
+     y="240"
+     text-anchor="middle"
+     dominant-baseline="central"
+     fill="#534AB7"
+     id="text7">MCP server</text>
+  <!-- RCE server box -->
+  <rect
+     x="404"
+     y="168"
+     width="210"
+     height="112"
+     rx="12"
+     fill="#FAECE7"
+     stroke="#F0997B"
+     stroke-width="0.5"
+     id="rect7" />
+  <text
+     class="title"
+     x="509"
+     y="210"
+     text-anchor="middle"
+     dominant-baseline="central"
+     fill="#4A1B0C"
+     id="text8">lumipy_rce_server.py</text>
+  <text
+     class="subtitle"
+     x="509"
+     y="232"
+     text-anchor="middle"
+     dominant-baseline="central"
+     fill="#993C1D"
+     id="text9">Remote code execution</text>
+  <!-- Arrows -->
+  <text
+     class="label"
+     x="340"
+     y="210"
+     text-anchor="middle"
+     fill="#534AB7"
+     id="text10">Request</text>
+  <line
+     x1="278"
+     y1="218"
+     x2="400"
+     y2="218"
+     stroke="#534AB7"
+     stroke-width="1"
+     marker-end="url(#arrow)"
+     id="line10"
+     style="marker-end:url(#Triangle)" />
+  <text
+     class="label"
+     x="340"
+     y="242"
+     text-anchor="middle"
+     fill="#993c1d"
+     id="text11">Response</text>
+  <line
+     x1="401.99994"
+     y1="248"
+     x2="279.94431"
+     y2="248"
+     stroke="#993c1d"
+     stroke-width="0.984319"
+     marker-end="url(#arrow)"
+     id="line11"
+     style="marker-end:url(#marker2)" />
+  <!-- TCP socket badge -->
+  <rect
+     x="296"
+     y="270"
+     width="88"
+     height="24"
+     rx="12"
+     fill="#F1EFE8"
+     stroke="#B4B2A9"
+     stroke-width="0.5"
+     id="rect11" />
+  <text
+     class="badge"
+     x="340"
+     y="282"
+     text-anchor="middle"
+     dominant-baseline="central"
+     fill="#5f5e5a"
+     id="text12">TCP socket</text>
+</svg>

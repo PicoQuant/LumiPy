@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+	"LumiPyMCPTool": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "fastmcp",
+		"{user path}\\MCPTool\\lumipy_mcp_server.py"
+      ]
+    }
+  }
+}
