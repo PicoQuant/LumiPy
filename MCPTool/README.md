@@ -133,4 +133,4 @@ Start Luminosa software, open PyEdit, select an environment and run .\lumipy_rce
 
 
 
-![Overview](Overview.svg)
+![Connected_to_Claude](LumiPyConnected_toClaude.PNG)
