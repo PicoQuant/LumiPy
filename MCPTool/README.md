@@ -132,5 +132,8 @@ Start Luminosa software, open PyEdit, select an environment and run .\lumipy_rce
 **To minimize the risk of unintended or unsafe code execution, it is strongly recommended to select a python environment with no external modules (other than numpy) installed if running lumipy_rce_server.py.**
 
 
-
+## Impressions
 ![Connected_to_Claude](LumiPyConnected_toClaude.PNG)
+
+![IdentifyObjects](Screenshot_example_identify_objects.jpg)
+
