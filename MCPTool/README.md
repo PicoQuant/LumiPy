@@ -138,4 +138,5 @@ Start Luminosa software, open PyEdit, select an environment and run .\lumipy_rce
 ![Connected_to_Claude](LumiPyConnected_toClaude.PNG)
 
 ![IdentifyObjects](Screenshot_example_identify_objects.jpg)
+![IdentifyObjects](enable_autofocus.jpg)
 
