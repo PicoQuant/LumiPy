@@ -130,3 +130,7 @@ npx @srbhptl39/mcp-superassistant-proxy@latest --config .\fastmcp_config.json
 
 Start Luminosa software, open PyEdit, select an environment and run .\lumipy_rce_server.py to give lumipy_mcp_server remote access to the system. Abort the script to disconnect from mcp server.
 **To minimize the risk of unintended or unsafe code execution, it is strongly recommended to select a python environment with no external modules (other than numpy) installed if running lumipy_rce_server.py.**
+
+
+
+![Overview](Overview.svg)
