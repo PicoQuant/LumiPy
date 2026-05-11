@@ -112,7 +112,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 **Use LumiPy at your own risk. We are not responsible for any damages or losses resulting from the use of this software.**
 
 ## Impressions
-https://www.youtube.com/watch?v=vx7hwaazC3c
-<img src="Icon.png" alt="LumiPy logo" style="height: 256px; width:256px;"/>
-<img src="Example_Screenshot_ConnectingNapari.jpg" alt="Example_Screenshot_ConnectingNapari" style="height: 312px; width:512px;"/>
+- https://www.youtube.com/watch?v=vx7hwaazC3c
+- <img src="Icon.png" alt="LumiPy logo" style="height: 256px; width:256px;"/>
+- <img src="Example_Screenshot_ConnectingNapari.jpg" alt="Example_Screenshot_ConnectingNapari" style="height: 312px; width:512px;"/>
 
