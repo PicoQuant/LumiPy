@@ -113,6 +113,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Impressions
 - Example Video for an adaptive workflow for FCS in microparticles: https://www.youtube.com/watch?v=vx7hwaazC3c
+- <img src="Example_LumipyFCS" alt="Example_LumiPy_FCS" style="height: 312px; width:512px;"/>
 - <img src="Icon.png" alt="LumiPy logo" style="height: 256px; width:256px;"/>
 - <img src="Example_Screenshot_ConnectingNapari.jpg" alt="Example_Screenshot_ConnectingNapari" style="height: 312px; width:512px;"/>
 
