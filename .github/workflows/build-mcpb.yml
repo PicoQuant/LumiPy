@@ -95,7 +95,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.tag }}
-          name: LumiPyMCP ${{ steps.version.outputs.version }}
+          name: LumiPy ${{ steps.version.outputs.version }}
           prerelease: ${{ steps.version.outputs.prerelease }}
           draft: ${{ steps.version.outputs.draft }}
           files: |
