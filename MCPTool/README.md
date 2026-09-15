@@ -27,11 +27,25 @@ Clone or download the LumiPy repository with subfolder **MCPTool**. Note the abs
 
 ## Install uv package manager
 
+Pick one of the two options below.
+
+### Option A: winget (recommended)
+
+Open a terminal (CMD or PowerShell) and run:
+
+```bash
+winget install --id=astral-sh.uv -e
+```
+
+winget registers `uv` on your `PATH` automatically, so no manual PATH edit is normally required.
+
+### Option B: PowerShell install script
+
 Run the installer:
 
 ```bash
 powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"
-````
+```
 
 By default, `uv` is installed to:
 
