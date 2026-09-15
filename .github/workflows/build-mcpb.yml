@@ -1,0 +1,88 @@
+name: Build MCPB extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine version and release channel
+        id: version
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [[ "$GITHUB_REF" != refs/tags/v* ]]; then
+            echo "Not a tag push (workflow_dispatch) - using dev version, build only, no release." >&2
+            TAG="v0.0.0-dev"
+          fi
+          BASE_VERSION="${TAG#v}"
+
+          # A release only ships as "stable" when its tag commit is on main.
+          # Anything tagged from another branch (or not on origin/main) ships as beta.
+          git fetch origin main --depth=1 2>/dev/null || true
+          if git merge-base --is-ancestor "$GITHUB_SHA" origin/main 2>/dev/null; then
+            IS_MAIN=true
+          else
+            IS_MAIN=false
+          fi
+
+          SHORT_SHA="${GITHUB_SHA:0:7}"
+          if [[ "$IS_MAIN" == "true" ]]; then
+            VERSION="$BASE_VERSION"
+            PRERELEASE="false"
+          else
+            VERSION="${BASE_VERSION}-beta.${SHORT_SHA}"
+            PRERELEASE="true"
+          fi
+
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$PRERELEASE" >> "$GITHUB_OUTPUT"
+          echo "Resolved version=$VERSION prerelease=$PRERELEASE (tag=$TAG, is_main=$IS_MAIN)"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Render manifest
+        run: |
+          sed -i \
+            -e "s/__VERSION__/${{ steps.version.outputs.version }}/g" \
+            -e "s/__REF__/${{ steps.version.outputs.tag }}/g" \
+            mcpb/manifest.json
+
+      - name: Add icon
+        run: cp Icon.png mcpb/icon.png
+
+      - name: Validate manifest
+        run: npx -y @anthropic-ai/mcpb@2 validate mcpb/manifest.json
+
+      - name: Pack extension
+        run: npx -y @anthropic-ai/mcpb@2 pack mcpb "LumiPyMCP-${{ steps.version.outputs.version }}.mcpb"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: LumiPyMCP-${{ steps.version.outputs.version }}
+          path: LumiPyMCP-${{ steps.version.outputs.version }}.mcpb
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: LumiPyMCP ${{ steps.version.outputs.version }}
+          prerelease: ${{ steps.version.outputs.prerelease }}
+          files: LumiPyMCP-${{ steps.version.outputs.version }}.mcpb

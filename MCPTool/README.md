@@ -70,9 +70,17 @@ If `uv` is not recognized, add the install directory to your user `Path` manuall
 5. Save with **OK**
 6. Restart your terminal
 
-## Claude Desktop (recommended)
+## Claude Desktop — one-click install (recommended)
 
 Download Desktop-App (https://claude.ai/login), install and login with your account (or create a new one).
+
+1. Go to the [Releases page](https://github.com/PicoQuant/LumiPy/releases) of this repository and download the `LumiPyMCP-*.mcpb` file from the latest release (releases built from a branch other than `main` are marked **Pre-release** / `-beta`).
+2. Double-click the downloaded `.mcpb` file, or open it from Claude Desktop → Settings → Extensions → Install Extension.
+3. Restart Claude Desktop if prompted, go to Connector settings and inspect the mcp tool.
+
+This installs a small extension whose only job is to launch `uv run --with fastmcp <server script>` for you — it does **not** copy the LumiPy repository or the server code onto your machine. `lumipy_mcp_server.py` is fetched directly from this repository (pinned to the release tag) by `uv` each time the extension starts, so no manual path editing or `git clone` is required. `uv` must still be installed as described above, and `LumiPy.md` / `Disclaimer.md` are worth reading before use even though they aren't bundled in the `.mcpb`.
+
+## Claude Desktop — manual setup (alternative)
 
 1. Open %USERPROFILE%\AppData\Roaming\Claude\claude_desktop_config.json
 2. Add content of .\fastmcp_config.json to claude_desktop_config.json (if there are already other entries then don't forget to add a comma). Replace {user path} with your path to the downloaded **MCPTool** folder. The claude_desktop_config.json then should look similar to this:

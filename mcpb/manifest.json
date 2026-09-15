@@ -1,0 +1,33 @@
+{
+  "manifest_version": "0.3",
+  "name": "lumipymcp",
+  "display_name": "LumiPyMCP",
+  "version": "__VERSION__",
+  "description": "AI-agent access to PicoQuant Luminosa microscope systems via LumiPy Python scripting.",
+  "long_description": "LumiPyMCP lets an AI agent (e.g. Claude Desktop) control and query a PicoQuant Luminosa microscope through the LumiPy Python interface: running measurements, adjusting parameters, and reading back live results. All AI-generated code is logged and saved as an editable Python script for full transparency and reproducibility. Requires a separate PicoQuant Luminosa system running the lumipy_rce_server.py remote execution server. Read the Disclaimer before use: this tool can execute arbitrary AI-generated code against connected microscope hardware.",
+  "author": {
+    "name": "PicoQuant GmbH",
+    "url": "https://www.picoquant.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PicoQuant/LumiPy"
+  },
+  "homepage": "https://github.com/PicoQuant/LumiPy/tree/main/MCPTool",
+  "documentation": "https://github.com/PicoQuant/LumiPy/blob/main/MCPTool/README.md",
+  "license": "MIT",
+  "icon": "icon.png",
+  "keywords": ["microscopy", "luminosa", "picoquant", "lumipy", "fcs", "confocal"],
+  "server": {
+    "type": "python",
+    "entry_point": "server/lumipy_mcp_server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with", "fastmcp",
+        "https://raw.githubusercontent.com/PicoQuant/LumiPy/__REF__/MCPTool/lumipy_mcp_server.py"
+      ]
+    }
+  }
+}
