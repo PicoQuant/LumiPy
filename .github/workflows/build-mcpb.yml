@@ -41,15 +41,22 @@ jobs:
           if [[ "$IS_MAIN" == "true" ]]; then
             VERSION="$BASE_VERSION"
             PRERELEASE="false"
+            DRAFT="false"
           else
             VERSION="${BASE_VERSION}-beta.${SHORT_SHA}"
             PRERELEASE="true"
+            # Zenodo's GitHub integration archives (and mints a DOI for) every
+            # *published* release regardless of the prerelease flag. Keeping
+            # beta releases as drafts means they never fire the "published"
+            # webhook, so they never reach Zenodo.
+            DRAFT="true"
           fi
 
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "prerelease=$PRERELEASE" >> "$GITHUB_OUTPUT"
-          echo "Resolved version=$VERSION prerelease=$PRERELEASE (tag=$TAG, is_main=$IS_MAIN)"
+          echo "draft=$DRAFT" >> "$GITHUB_OUTPUT"
+          echo "Resolved version=$VERSION prerelease=$PRERELEASE draft=$DRAFT (tag=$TAG, is_main=$IS_MAIN)"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -72,11 +79,16 @@ jobs:
       - name: Pack extension
         run: npx -y @anthropic-ai/mcpb@2 pack mcpb "LumiPyMCP-${{ steps.version.outputs.version }}.mcpb"
 
-      - name: Upload build artifact
+      - name: Build LumiPy source distribution
+        run: git archive --format=zip -o "LumiPy-${{ steps.version.outputs.version }}.zip" HEAD
+
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: LumiPyMCP-${{ steps.version.outputs.version }}
-          path: LumiPyMCP-${{ steps.version.outputs.version }}.mcpb
+          name: release-assets-${{ steps.version.outputs.version }}
+          path: |
+            LumiPyMCP-${{ steps.version.outputs.version }}.mcpb
+            LumiPy-${{ steps.version.outputs.version }}.zip
 
       - name: Publish release
         if: startsWith(github.ref, 'refs/tags/v')
@@ -85,4 +97,7 @@ jobs:
           tag_name: ${{ steps.version.outputs.tag }}
           name: LumiPyMCP ${{ steps.version.outputs.version }}
           prerelease: ${{ steps.version.outputs.prerelease }}
-          files: LumiPyMCP-${{ steps.version.outputs.version }}.mcpb
+          draft: ${{ steps.version.outputs.draft }}
+          files: |
+            LumiPyMCP-${{ steps.version.outputs.version }}.mcpb
+            LumiPy-${{ steps.version.outputs.version }}.zip
