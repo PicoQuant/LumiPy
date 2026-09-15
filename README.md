@@ -30,7 +30,13 @@ The Python interface allows for feedback adaptive workflows for smart microscopy
 ## Installation
 
 1. Ensure you have Python 3.9 or later installed
-2. Install the required dependencies:
+2. Install LumiPy and its dependencies:
+   ```bash
+   pip install PicoQuant-LumiPy
+   ```
+   This gives you `pqlumi`, `pqdc`, `pqcam`, `pqharp`, `pqscan`, `pqtool` and `numpy`, so `import pqlumi` / `from pqlumi import measurement` work the same as when developing directly on Luminosa's built-in Python environment (useful when developing remotely without hardware). Add the `mcp` extra (`pip install "PicoQuant-LumiPy[mcp]"`) if you also want the `lumipy_mcp_server` module / `picoquant-lumipy-mcp` command described in [MCPTool](MCPTool/README.md).
+
+   Alternatively, install just `numpy` and copy the `libs/` folder into your project path (e.g. when running inside Luminosa's integrated Python editor, which already has these modules available):
    ```bash
    pip install numpy
    ```

@@ -243,5 +243,8 @@ def abort_code_execution() -> str:
     """
     return _run_tool("abort_code_execution", "__kill_execution__")
 
-if __name__ == "__main__":
+def main():
     mcp.run()
+
+if __name__ == "__main__":
+    main()

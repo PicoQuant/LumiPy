@@ -1,0 +1,121 @@
+name: Publish PyPI package
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      is_main: ${{ steps.version.outputs.is_main }}
+      is_tag: ${{ steps.version.outputs.is_tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine version and release channel
+        id: version
+        run: |
+          IS_TAG="true"
+          TAG="${GITHUB_REF_NAME}"
+          if [[ "$GITHUB_REF" != refs/tags/v* ]]; then
+            echo "Not a tag push (workflow_dispatch) - build only, no publish." >&2
+            TAG="v0.0.0-dev"
+            IS_TAG="false"
+          fi
+          BASE_VERSION="${TAG#v}"
+
+          # A release only ships to real PyPI when its tag commit is on main.
+          # Anything tagged from another branch ships to TestPyPI instead -
+          # unlike a GitHub draft release, a PyPI upload can't be un-published,
+          # so beta builds must never reach the real index.
+          git fetch origin main --depth=1 2>/dev/null || true
+          if git merge-base --is-ancestor "$GITHUB_SHA" origin/main 2>/dev/null; then
+            IS_MAIN="true"
+          else
+            IS_MAIN="false"
+          fi
+
+          if [[ "$IS_MAIN" == "true" ]]; then
+            VERSION="$BASE_VERSION"
+          else
+            # PyPI requires PEP 440 versions, not semver - a "-beta.<sha>" suffix
+            # (valid for the .mcpb manifest) isn't a valid PEP 440 grammar
+            # production. Use a ".devN" dev-release segment instead, N being the
+            # run number: PEP 440-valid, unique per run, and excluded from
+            # `pip install` resolution by default (needs --pre), so it can't be
+            # picked up accidentally even once published.
+            VERSION="${BASE_VERSION}.dev${GITHUB_RUN_NUMBER}"
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "is_main=$IS_MAIN" >> "$GITHUB_OUTPUT"
+          echo "is_tag=$IS_TAG" >> "$GITHUB_OUTPUT"
+          echo "Resolved version=$VERSION is_main=$IS_MAIN is_tag=$IS_TAG (tag=$TAG)"
+
+      - name: Assemble package source
+        run: |
+          mkdir -p pypi_build
+          cp pypi/pyproject.toml pypi_build/pyproject.toml
+          cp README.md pypi_build/README.md
+          cp LICENSE pypi_build/LICENSE
+          cp libs/*.py pypi_build/
+          cp MCPTool/lumipy_mcp_server.py pypi_build/
+          sed -i "s/__VERSION__/${{ steps.version.outputs.version }}/" pypi_build/pyproject.toml
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Build distributions
+        run: uv build --out-dir dist pypi_build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pypi-dist-${{ steps.version.outputs.version }}
+          path: dist/*
+
+  publish-stable:
+    needs: build
+    if: needs.build.outputs.is_tag == 'true' && needs.build.outputs.is_main == 'true'
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pypi-dist-${{ needs.build.outputs.version }}
+          path: dist
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+  publish-beta:
+    needs: build
+    if: needs.build.outputs.is_tag == 'true' && needs.build.outputs.is_main == 'false'
+    runs-on: ubuntu-latest
+    environment: testpypi
+    permissions:
+      id-token: write
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pypi-dist-${{ needs.build.outputs.version }}
+          path: dist
+
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/

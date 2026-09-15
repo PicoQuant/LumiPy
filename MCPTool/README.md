@@ -21,17 +21,33 @@ Content:
 
 ![Overview](Overview.svg)
 
+> **Prerequisite:** LumiPyMCP only works while **`lumipy_rce_server.py` is loaded and running inside Luminosa** (via PyEdit) on the microscope PC — see [Python remote server (RCE)](#python-remote-server-rce) below. The MCP tool set up in the steps below (Claude Desktop, browser, or LM Studio) has no access to the microscope until that script is running.
+
 ## Installation
 
 Clone or download the LumiPy repository with subfolder **MCPTool**. Note the absolute path of this folder on your PC file system.
 
 ## Install uv package manager
 
+Pick one of the two options below.
+
+### Option A: winget (recommended)
+
+Open a terminal (CMD or PowerShell) and run:
+
+```bash
+winget install --id=astral-sh.uv -e
+```
+
+winget registers `uv` on your `PATH` automatically, so no manual PATH edit is normally required.
+
+### Option B: PowerShell install script
+
 Run the installer:
 
 ```bash
 powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"
-````
+```
 
 By default, `uv` is installed to:
 
@@ -70,9 +86,19 @@ If `uv` is not recognized, add the install directory to your user `Path` manuall
 5. Save with **OK**
 6. Restart your terminal
 
-## Claude Desktop (recommended)
+## Claude Desktop — one-click install (recommended)
 
 Download Desktop-App (https://claude.ai/login), install and login with your account (or create a new one).
+
+1. Go to the [Releases page](https://github.com/PicoQuant/LumiPy/releases) of this repository and download the `LumiPyMCP-*.mcpb` file from the latest release (releases built from a branch other than `main` are marked **Pre-release** / `-beta`).
+2. Double-click the downloaded `.mcpb` file, or open it from Claude Desktop → Settings → Extensions → Install Extension.
+3. Restart Claude Desktop if prompted, go to Connector settings and inspect the mcp tool.
+
+**Before the agent can reach the microscope, `lumipy_rce_server.py` must be loaded and running in Luminosa** — see [Python remote server (RCE)](#python-remote-server-rce) below.
+
+This installs a small extension whose only job is to launch `uv run --with fastmcp <server script>` for you — it does **not** copy the LumiPy repository or the server code onto your machine. `lumipy_mcp_server.py` is fetched directly from this repository (pinned to the release tag) by `uv` each time the extension starts, so no manual path editing or `git clone` is required. `uv` must still be installed as described above, and `LumiPy.md` / `Disclaimer.md` are worth reading before use even though they aren't bundled in the `.mcpb`.
+
+## Claude Desktop — manual setup (alternative)
 
 1. Open %USERPROFILE%\AppData\Roaming\Claude\claude_desktop_config.json
 2. Add content of .\fastmcp_config.json to claude_desktop_config.json (if there are already other entries then don't forget to add a comma). Replace {user path} with your path to the downloaded **MCPTool** folder. The claude_desktop_config.json then should look similar to this:
@@ -130,7 +156,7 @@ npx @srbhptl39/mcp-superassistant-proxy@latest --config .\fastmcp_config.json
 
 ## Python remote server (RCE)
 
-Start Luminosa software, open PyEdit, select an environment and run .\lumipy_rce_server.py to give lumipy_mcp_server remote access to the system. Abort the script to disconnect from mcp server.
+**Required — the MCP tool has no access to the microscope until this script is loaded and actively running in Luminosa.** Start Luminosa software, open PyEdit, select an environment and run .\lumipy_rce_server.py to give lumipy_mcp_server remote access to the system. Keep it running for the duration of the session. Abort the script to disconnect from mcp server.
 **To minimize the risk of unintended or unsafe code execution, it is strongly recommended to select a python environment with no external modules (other than numpy) installed if running lumipy_rce_server.py.**
 
 
