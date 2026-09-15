@@ -45,11 +45,16 @@ jobs:
             IS_MAIN="false"
           fi
 
-          SHORT_SHA="${GITHUB_SHA:0:7}"
           if [[ "$IS_MAIN" == "true" ]]; then
             VERSION="$BASE_VERSION"
           else
-            VERSION="${BASE_VERSION}-beta.${SHORT_SHA}"
+            # PyPI requires PEP 440 versions, not semver - a "-beta.<sha>" suffix
+            # (valid for the .mcpb manifest) isn't a valid PEP 440 grammar
+            # production. Use a ".devN" dev-release segment instead, N being the
+            # run number: PEP 440-valid, unique per run, and excluded from
+            # `pip install` resolution by default (needs --pre), so it can't be
+            # picked up accidentally even once published.
+            VERSION="${BASE_VERSION}.dev${GITHUB_RUN_NUMBER}"
           fi
 
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
