@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PicoQuant-LumiPy"
+version = "__VERSION__"
+description = "Python interface for controlling and acquiring data from PicoQuant Luminosa microscope systems, including the LumiPyMCP AI-agent tool."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "PicoQuant GmbH" }]
+keywords = ["microscopy", "luminosa", "picoquant", "lumipy", "fcs", "confocal", "mcp"]
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+mcp = ["fastmcp"]
+
+[project.urls]
+Homepage = "https://github.com/PicoQuant/LumiPy"
+Documentation = "https://github.com/PicoQuant/LumiPy/blob/main/MCPTool/README.md"
+Repository = "https://github.com/PicoQuant/LumiPy"
+"Author Homepage" = "https://www.picoquant.com"
+
+[project.scripts]
+picoquant-lumipy-mcp = "lumipy_mcp_server:main"
+
+[tool.setuptools]
+py-modules = ["pqlumi", "pqdc", "pqcam", "pqharp", "pqscan", "pqtool", "lumipy_mcp_server"]
