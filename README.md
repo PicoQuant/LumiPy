@@ -120,6 +120,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 **Use LumiPy at your own risk. We are not responsible for any damages or losses resulting from the use of this software.**
 
 ## Impressions
+- Example Application note about optimized and robust FCS measurements on zero mode waveguides  https://www.picoquant.com/science/fcs-with-zero-mode-waveguides/
 - Example Video for an adaptive workflow for FCS in microparticles: https://www.youtube.com/watch?v=vx7hwaazC3c
 - <img src="Example_LumipyFCS.png" alt="Example_LumiPy_FCS" style="height: 312px; width:512px;"/>
 - <img src="Icon.png" alt="LumiPy logo" style="height: 256px; width:256px;"/>
