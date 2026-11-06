@@ -8,6 +8,17 @@ An important strong point is that the whole interaction with the agent is logged
 
 This project is intended to be a starting template for research, development, and community-driven improvements and extensions. It is provided for experimental purposes only and you must read the **Disclaimer** first before using the software.
 
+Things are evolving fast and AI -solutions need to be future-proof and open to efforts from the scientific community. This was the guiding principle behind our efforts with Agentic control of microscopy workflows.
+
+Read more about these new development in our scientific blog article.... From Natural Language to Fluorescence Measurements
+https://www.picoquant.com/science/controlling-a-microscope-with-ai-claude-meets-luminosa/?gf_page_34=1
+
+We are very glad that #Luminosa users can already today start experimenting with the new possibilities. 
+
+Looking ahead, several questions remain. Will research groups and institutions develop their own AI assistants for instrument control? Will researchers embrace natural language interaction alongside traditional graphical user-interfaces? And will scientific communities establish common standards for AI-assisted instrumentation?
+
+We are well-positioned to get the right answers in every scenario always in close communication with our users!
+
 ## Overview
 
 Content:
