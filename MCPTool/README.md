@@ -10,7 +10,7 @@ This project is intended to be a starting template for research, development, an
 
 Things are evolving fast and AI -solutions need to be future-proof and open to efforts from the scientific community. This was the guiding principle behind our efforts with Agentic control of microscopy workflows.
 
-Read more about these new development in our scientific blog article.... From Natural Language to Fluorescence Measurements
+** Read more about these new development in our scientific blog article.... From Natural Language to Fluorescence Measurements **
 https://www.picoquant.com/science/controlling-a-microscope-with-ai-claude-meets-luminosa/?gf_page_34=1
 
 We are very glad that #Luminosa users can already today start experimenting with the new possibilities. 
@@ -172,6 +172,8 @@ npx @srbhptl39/mcp-superassistant-proxy@latest --config .\fastmcp_config.json
 
 
 ## Impressions
+* Blog Article: https://www.picoquant.com/science/controlling-a-microscope-with-ai-claude-meets-luminosa/?gf_page_34=1
+* Example about connecting Claude with Luminosa:   https://youtu.be/PLiFPx_GXEk?si=edJzih6mmxnY5umv
 ![Connected_to_Claude](LumiPyConnected_toClaude.PNG)
 
 ![IdentifyObjects](Screenshot_example_identify_objects.jpg)
